@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build and preview your personal portfolio website.">
+  <title>PortfolioForge — Portfolio Generator</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">P</span> PortfolioForge</a>
+    <nav><a href="#features">Features</a><button id="navLogin" class="btn btn-quiet">Log in</button><button id="navRegister" class="btn btn-primary">Get started</button></nav>
+  </header>
+  <main>
+    <section id="hero" class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">YOUR WORK. YOUR STORY.</p>
+        <h1>Build a portfolio that feels <span>like you.</span></h1>
+        <p class="hero-subtitle">Create a clean personal website, choose a template, customize your theme, and preview changes instantly — no design experience needed.</p>
+        <div class="hero-actions"><button id="heroStart" class="btn btn-primary btn-large">Create my portfolio <span>↗</span></button><a class="text-link" href="#features">Explore features</a></div>
+        <div class="hero-proof"><span class="proof-dot"></span> Simple to build · Easy to share · Made for you</div>
+      </div>
+      <div class="hero-art" aria-label="Portfolio preview illustration">
+        <div class="floating-label label-top">✦ Your personal brand</div>
+        <div class="mock-window">
+          <div class="mock-bar"><i></i><i></i><i></i><span>myportfolio.site</span></div>
+          <div class="mock-content">
+            <div class="mock-nav"><b>Alex Morgan.</b><span>ABOUT&nbsp;&nbsp; WORK&nbsp;&nbsp; CONTACT</span></div>
+            <div class="mock-intro"><div><small>HELLO, I'M</small><h2>Alex Morgan</h2><p>Designer & creative thinker.</p><span class="mock-pill">Explore my work ↗</span></div><div class="avatar-shape">AM</div></div>
+            <div class="mock-projects"><div><small>SELECTED WORK</small><div class="project-block project-one"></div></div><div><small>RECENT PROJECT</small><div class="project-block project-two"></div></div></div>
+          </div>
+        </div>
+        <div class="floating-label label-bottom">● Live preview</div>
+      </div>
+    </section>
+    <section id="features" class="features-section">
+      <div class="section-heading"><p class="eyebrow">BUILT AROUND YOU</p><h2>Everything you need to get started</h2><p>One simple workspace to shape your online presence.</p></div>
+      <div class="feature-grid">
+        <article class="feature-card"><span class="feature-icon">♙</span><h3>User registration & login</h3><p>Create an account and return to edit your saved portfolio whenever you need.</p></article>
+        <article class="feature-card"><span class="feature-icon">▦</span><h3>Multiple templates</h3><p>Choose from three layouts designed for different personal styles.</p></article>
+        <article class="feature-card"><span class="feature-icon">◉</span><h3>Live preview</h3><p>See your portfolio update as you change text, colors, and sections.</p></article>
+        <article class="feature-card"><span class="feature-icon">◐</span><h3>Theme customization</h3><p>Pick your accent color and light or dark appearance.</p></article>
+        <article class="feature-card"><span class="feature-icon">☷</span><h3>Portfolio sections</h3><p>Edit your introduction, skills, projects, education, and contact details.</p></article>
+        <article class="feature-card"><span class="feature-icon">▣</span><h3>Responsive design</h3><p>Use a layout that adapts to mobile, tablet, and desktop screens.</p></article>
+      </div>
+    </section>
+    <section class="cta-band"><div><p class="eyebrow">READY WHEN YOU ARE</p><h2>Your next opportunity starts with a first draft.</h2></div><button id="ctaStart" class="btn btn-light btn-large">Start building ↗</button></section>
+    <footer><a class="brand" href="#"><span class="brand-mark">P</span> PortfolioForge</a><span>Made for learners, creators, and future professionals.</span><span>© <span id="year"></span> PortfolioForge</span></footer>
+  </main>
+
+  <div id="authModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="modal-card">
+      <button id="closeAuth" class="icon-button close-button" aria-label="Close">×</button>
+      <p class="eyebrow">WELCOME TO PORTFOLIOFORGE</p><h2 id="authTitle">Create your account</h2><p id="authSubtitle" class="muted">Your personal portfolio workspace starts here.</p>
+      <form id="authForm">
+        <label id="nameLabel">Full name<input id="fullName" name="name" autocomplete="name" maxlength="80" required></label>
+        <label>Email address<input id="email" name="email" type="email" autocomplete="email" maxlength="254" required></label>
+        <label>Password<input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required><small>Use at least 8 characters.</small></label>
+        <p id="authError" class="form-error" aria-live="polite"></p>
+        <button id="authSubmit" class="btn btn-primary btn-full" type="submit">Create account</button>
+      </form>
+      <p class="switch-auth"><span id="switchText">Already have an account?</span> <button id="switchAuth" class="link-button">Log in</button></p>
+    </div>
+  </div>
+
+  <section id="workspace" class="workspace hidden">
+    <header class="workspace-header"><a class="brand" href="#"><span class="brand-mark">P</span> PortfolioForge</a><div class="workspace-user"><span id="welcomeUser">Your workspace</span><button id="logoutBtn" class="btn btn-quiet">Log out</button></div></header>
+    <div class="workspace-layout">
+      <aside class="editor-panel">
+        <div class="panel-title"><div><p class="eyebrow">YOUR WORKSPACE</p><h1>Portfolio editor</h1></div><span class="saved-indicator" id="saveStatus">Not saved</span></div>
+        <form id="portfolioForm">
+          <label>Portfolio title<input id="portfolioTitle" maxlength="100" value="My Portfolio" required></label>
+          <label>Your name<input id="personName" maxlength="100" value="Your Name" required></label>
+          <label>Professional headline<input id="headline" maxlength="160" value="Student • Future professional"></label>
+          <label>About you<textarea id="about" rows="3" maxlength="1200">Write a short introduction about yourself, your interests, and your goals.</textarea></label>
+          <div class="form-row"><label>Email<input id="contactEmail" type="email" maxlength="254" placeholder="you@example.com"></label><label>Location<input id="location" maxlength="100" placeholder="Hyderabad, India"></label></div>
+          <label>Skills <small>Separate each skill with a comma</small><input id="skills" maxlength="500" value="HTML, CSS, JavaScript"></label>
+          <label>Projects <small>One project per line: Project name - short description</small><textarea id="projects" rows="4" maxlength="2000">Portfolio Website - A responsive personal website
+Student Planner - A simple study planning app</textarea></label>
+          <label>Education<textarea id="education" rows="2" maxlength="600" placeholder="Degree, college, year">B.Tech Student</textarea></label>
+          <div class="control-section"><h3>Design</h3>
+            <label>Template<select id="template"><option value="minimal">01 · Minimal</option><option value="bold">02 · Bold</option><option value="classic">03 · Classic</option></select></label>
+            <label>Accent color<div class="color-control"><input id="accent" type="color" value="#6d5ce8"><span id="accentValue">#6D5CE8</span></div></label>
+            <label>Appearance<select id="appearance"><option value="light">Light</option><option value="dark">Dark</option></select></label>
+          </div>
+          <div class="control-section"><h3>Visible sections</h3>
+            <label class="check-row"><input type="checkbox" id="showAbout" checked> About</label>
+            <label class="check-row"><input type="checkbox" id="showSkills" checked> Skills</label>
+            <label class="check-row"><input type="checkbox" id="showProjects" checked> Projects</label>
+            <label class="check-row"><input type="checkbox" id="showEducation" checked> Education</label>
+            <label class="check-row"><input type="checkbox" id="showContact" checked> Contact</label>
+          </div>
+          <div class="editor-actions"><button class="btn btn-primary" type="submit">Save portfolio</button><button id="newPortfolio" class="btn btn-outline" type="button">New draft</button></div>
+          <p id="editorMessage" class="form-message" aria-live="polite"></p>
+        </form>
+      </aside>
+      <section class="preview-panel">
+        <div class="preview-toolbar"><div><span class="live-dot"></span><strong>Live preview</strong><span class="muted">Changes appear instantly</span></div><button id="openPreview" class="btn btn-outline btn-small">Open preview ↗</button></div>
+        <div id="portfolioPreview" class="portfolio-preview"></div>
+      </section>
+    </div>
+  </section>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
